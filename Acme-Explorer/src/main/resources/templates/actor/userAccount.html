@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org">
+		<body>
+			<div th:fragment="frag-userAccount-form">
+				<div class="form-group row">
+					<div class="col-sm-3">
+						<label for="username" th:text="#{com.alvcalgon.acme.explorer.user.account.username}"> Username</label>
+						<input type="text" id="username" name="username" th:field="*{username}" class="form-control" />
+						<div class="valid-feedback"></div>
+						<div class="invalid-feedback">
+							<span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Invalid username</span>
+							<span id="actorUsernameError"></span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-sm-3">
+						<label for="password" th:text="#{com.alvcalgon.acme.explorer.user.account.password}"> Password</label>
+						<input type="password" id="password" name="password" th:field="*{password}" class="form-control" />
+						<div class="valid-feedback"></div>
+						<div class="invalid-feedback">
+							<span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Invalid password</span>
+							<span id="actorPasswordError"></span>
+						</div>
+					</div>
+					
+					<div class="col-sm-3">
+						<label for="confirmPassword" th:text="#{com.alvcalgon.acme.explorer.user.account.confirm.password}"> Confirm Password</label>
+						<input type="password" id="confirmPassword" name="confirmPassword" th:field="*{confirmPassword}" class="form-control" />
+						<div class="valid-feedback"></div>
+						<div class="invalid-feedback">
+							<span class="error" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Invalid confirm password</span>
+							<span id="actorConfirmPasswordError"></span>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</body>
+	</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+	<html th:replace="~{master-page/layout :: layout(~{::title}, ~{::div.content})}">
+		<head>
+			<title th:text="#{title.api}">Informacion de la API</title>
+		</head>
+	<body>
+		<div class="content container">
+			<h1 th:text="#{title.api}"></h1>
+			
+			<div class="overview">
+				<h2 th:text="#{api.overview}">Cabecera</h2>
+				<p th:text="#{api.overview.text}">Texto</p>
+			</div>
+			
+			<div class="resources">
+				<h2 th:text="#{api.resources}">Cabecera</h2>
+				<p th:text="#{api.resources.request}">Peticiones</p>
+				<ul>
+					<li>
+						<a target="_blank"
+						   th:href="${driverURL}"
+						   th:text="#{api.resources.driver.href}">
+						</a>
+						<span th:text="#{api.resources.driver}"> </span>	   
+					</li>
+					<li>
+						<a target="_blank"
+						   th:href="${constructorURL}"
+						   th:text="#{api.resources.constructor.href}">
+						</a>
+						<span th:text="#{api.resources.constructor}"> </span>	   
+					</li>
+					<li>
+						<a target="_blank"
+						   th:href="${circuitURL}"
+						   th:text="#{api.resources.circuit.href}">
+						</a>
+						<span th:text="#{api.resources.circuit}"> </span>	   
+					</li>
+					<li>
+						<a target="_blank"
+						   th:href="${raceURL}"
+						   th:text="#{api.resources.races.href}">
+						</a>
+						<span th:text="#{api.resources.races}"> </span>	   
+					</li>
+					<li>
+						<a target="_blank"
+						   th:href="${driverStdURL}"
+						   th:text="#{api.resources.driversstanding.href}">
+						</a>
+						<span th:text="#{api.resources.driversstanding}"> </span>	   
+					</li>
+					<li>
+						<a target="_blank" 
+						   th:href="${constructorStdURL}"
+						   th:text="#{api.resources.constructorstanding.href}">
+						</a>
+						<span th:text="#{api.resources.constructorstanding}"> </span>	   
+					</li>
+				</ul>
+				<p th:text="#{api.resources.response}">Respuestas</p>
+			</div>
+			
+			<div class="development">
+				<h2 th:text="#{api.development}">Cabecera</h2>
+				<p th:text="#{api.development.text}">Texto</p>
+				<p> <a th:text="#{master.api.link}"
+					   th:href="${swaggerURL}"
+					   target="_blank"> </a> </p>
+			</div>
+		</div>
+	</body>
+	</html>

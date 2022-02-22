@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+	<html th:lang-xmllang="${#locale}" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+		<head>
+			<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+			<link rel="stylesheet" type="text/css" th:href="@{/libraries/custom/css/global.css}" />
+			<link rel="stylesheet" type="text/css" th:href="@{/libraries/custom/css/header.css}" />
+			<link rel="stylesheet" type="text/css" th:href="@{/libraries/custom/css/footerLogin.css}" />
+			<link rel="stylesheet" type="text/css" th:href="@{/libraries/custom/css/responsive.css}" />
+			<link rel="stylesheet" type="text/css" th:href="@{/libraries/bootstrap/4.1.3/css/bootstrap.min.css}" />
+			
+			<script type="text/javascript" th:src="@{/libraries/jquery/3.3.1/js/jquery.min.js}"></script>
+													
+			<!--<script type="text/javascript" th:src="@{/libraries/popper.js/1.14.4/js/popper.min.js}"></script> -->
+			<script type="text/javascript" th:src="@{/libraries/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+			
+			<title th:text="#{com.alvcalgon.acme.explorer.login}">Login</title>
+		</head>
+		
+		<body>
+			<section class="master-page footer">
+				<a class="nav-item navbar-brand" href="#" th:href="@{/}">
+					<img class="img-fluid" 
+						 th:src="@{/images/logoAcme2.png}"
+						 alt="Motorsport F1" height="100px" width="200px" />
+				</a>
+			</section>
+			
+			<section class="master-page content">
+				<div class="form container">
+					<form th:action="@{/login}" method="post" id="form-login">
+						<div class="form-group">
+							<div class="col-sm-3">
+								<label for="username" th:text="#{com.alvcalgon.acme.explorer.login.username}"></label>
+								<input type="text" class="form-control is-invalid" id="username" name="username" />
+								<div class="valid-feedback"></div>
+									<div class="invalid-feedback">
+										<span class="hidden error">Invalid username</span>
+										<span id="usernameError"></span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-3">
+								<label for="password" th:text="#{com.alvcalgon.acme.explorer.login.password}"></label>
+								<input type="password" class="form-control is-invalid" id="password" name="password" />
+								<div class="valid-feedback"></div>
+									<div class="invalid-feedback">
+										<span class="hidden error">Invalid password</span>
+										<span id="passwordError"></span>
+								</div>
+							</div>
+						</div>
+						
+						<div class="">
+							<button type="submit" class="btn btn-form btn-secondary" th:text="#{com.alvcalgon.acme.explorer.login}">Login</button>
+						</div>
+					</form>
+				</div>
+				
+				<div id="container-create-account" class="container">
+					<p>
+						<span th:text="#{com.alvcalgon.acme.explorer.new.comer}">Is this your first time?</span>
+						<a href="#" th:href="@{/}" th:text="#{com.alvcalgon.acme.explorer.create.account}">Create an account</a>
+					</p>
+				</div>
+			</section>
+			
+			<section class="master-page footer">
+				<div id="piePagina" class="master-page-footer" th:insert="master-page/footer :: frag-footer"></div>
+			</section>
+			
+			<script type="text/javascript" th:src="@{/libraries/custom/js/language.js}"></script>
+		</body>
+	</html>

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+/* footer */
+#piePagina {
+	/*background-color: #008e97; */
+}
+
+#copyright p {
+	color: white;
+}
+
+#terms, #cookies {
+	margin-top: 20px;
+}
+
+#terms a, #cookies a {
+	color: white;
+}  
+
+#copyright {
+	margin-top: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+	#terms, #cookies {
+		margin-top: 2rem;		
+	}	
+}

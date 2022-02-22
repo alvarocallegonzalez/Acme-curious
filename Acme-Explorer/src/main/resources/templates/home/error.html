@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+	<html th:replace="~{master-page/layout :: layout(~{::title}, ~{::div.content})}">
+		<head>			
+			<title th:text="#{title.index}">Motorsport F1 Home</title>
+		</head>
+		
+		<body>
+			<div class="content">
+				<a href="#" th:href="@{/}">
+					<img class="img-fluid" 
+						th:src="@{/images/logoAcme2.png}"
+						 alt="Motorsport F1" height="200px" width="200px" />
+				</a>
+				
+				<p th:text="${errorMessage}">Unkown error</p>
+				<p th:text="#{error.text}">Texto</p>
+				
+				<p> <a th:href="@{/}" th:text="#{error.return}"> </a> </p>
+			</div>
+		</body>
+	</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org" th:replace="~{master-page/layout :: layout(~{::title}, ~{::div.content})}">
+		<head>			
+			<title th:text="#{title.index}">Beyond skies</title>
+		</head>
+		
+		<body>
+			<div class="content" th:fragment="frag-admin-edit">
+				<div class="container">
+					<form method="post" th:action="@{/actor/administrator/register}" id="admin-form" th:object="${administratorForm}" class="form">
+						<fieldset>
+							<legend th:text="#{com.alvcalgon.acme.explorer.actor.fieldset}">Personal information</legend>
+							<div th:replace="actor/actor :: frag-actor-form"></div>
+						</fieldset>
+						
+						<fieldset>
+							<legend th:text="#{com.alvcalgon.acme.explorer.user.account.fieldset}">User Account</legend>
+							<div th:replace="actor/userAccount :: frag-userAccount-form"></div>
+						</fieldset>
+						
+						<div class="botonera">
+							<button class="btn btn-success" type="submit" id="save" name="save" th:value="#{form.register}">Register</button>
+							<button th:if="${administratorForm.id != 0}" class="btn btn-danger" type="submit"
+							        id="delete" name="delete" th:value="#{form.delete}">Deleter</button>
+							<a th:href="@{/}" class="btn btn-link" onclick="envioForm()" th:text="#{form.cancel}"> Cancel </a>
+						</div>
+						<div id="container-erros">
+							<span th:if="${errorMessage != null && errorMessage != ''}" style="color:red;" th:text="${errorMessage}"></span>
+						</div>
+				</form>
+				</div>
+			</div>
+		</body>
+	</html>

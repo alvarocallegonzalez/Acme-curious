@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<div class="menu-principal" th:fragment="frag-menu">
+			<!-- <nav class="navbar navbar-expand-sm navbar-light bg-light"> -->
+			<nav class="navbar navbar-expand-sm navbar-light">
+				<a class="nav-item navbar-brand" href="#" th:href="@{/}">
+					<img class="img-fluid" 
+						 th:src="@{/images/logoAcme2.png}"
+						 alt="Motorsport F1" height="100px" width="200px" />
+				</a>
+				
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+					<span class="navbar-toggler-icon"> </span>
+				</button>
+				
+				<div class="collapse navbar-collapse" id="collapsibleNavbar">
+					<ul class="navbar-nav mr-auto">
+						<!-- TRIP -->
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#"
+							   id="navbardrop" data-toggle="dropdown"
+							   th:text="#{com.alvcalgon.acme.explorer.trip.menu}"> Trip </a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="#"
+								   sec:authorize="isAnonymous()"
+								   th:href="@{/trip/list}"
+							       th:text="#{com.alvcalgon.acme.explorer.trip.list}">Trip list</a>
+								<a class="dropdown-item" href="#"
+								   sec:authorize="isAuthenticated()"
+								   th:href="@{/trip/authenticated/list}"
+							       th:text="#{com.alvcalgon.acme.explorer.trip.list}">Trip list</a>
+								<a class="dropdown-item" href="#"
+								   sec:authorize="hasAuthority('MANAGER')"
+								   th:href="@{/trip/manager/list}"
+							       th:text="#{com.alvcalgon.acme.explorer.trip.list.my}">My Trip list</a>
+							    <a class="dropdown-item" href="#"
+								   sec:authorize="hasAuthority('MANAGER')"
+								   th:href="@{/trip/manager/create}"
+							       th:text="#{com.alvcalgon.acme.explorer.trip.create}">Create a trip</a>
+							</div>
+						</li>
+						
+						<!-- APPLICATION -->
+						<li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+							<a class="nav-link dropdown-toggle" href="#"
+							   id="navbardrop" data-toggle="dropdown"
+							   th:text="#{com.alvcalgon.acme.explorer.application.menu}"> Application </a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="#"
+								   sec:authorize="hasAuthority('EXPLORER')"
+								   th:href="@{/application/explorer/list}"
+							       th:text="#{com.alvcalgon.acme.explorer.application.list}">Application list</a>
+								<a class="dropdown-item" href="#"
+								   sec:authorize="hasAuthority('EXPLORER')"
+								   th:href="@{/trip/explorer/list}"
+							       th:text="#{com.alvcalgon.acme.explorer.application.create}">Create an application</a>
+							</div>
+						</li>
+						
+						<!-- REGISTER -->
+						<li class="nav-item dropdown" sec:authorize="isAnonymous()">
+							<a class="nav-link dropdown-toggle" href="#"
+							   id="navbardrop" data-toggle="dropdown"
+							   th:text="#{com.alvcalgon.acme.explorer.register}"> Register as </a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="#"
+								   th:href="@{/ranger/register}"
+							       th:text="#{com.alvcalgon.acme.explorer.register.ranger}">Ranger</a>
+								<a class="dropdown-item" href="#"
+								   th:href="@{/explorer/register}"
+							       th:text="#{com.alvcalgon.acme.explorer.register.explorer}">Explorer</a>
+							</div>
+						</li>
+						
+						<!-- FOR ADMINISTRATORS -->
+						<li class="nav-item dropdown" sec:authorize="hasAuthority('ADMINISTRATOR')">
+							<a class="nav-link dropdown-toggle" href="#"
+							   id="navbardrop" data-toggle="dropdown"
+							   th:text="#{com.alvcalgon.acme.explorer.register}"> Register as </a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="#"
+								   th:href="@{/administrator/administrator/register}"
+							       th:text="#{com.alvcalgon.acme.explorer.register.admin}">Administrator</a>
+								<a class="dropdown-item" href="#"
+								   th:href="@{/manager/administrator/register}"
+							       th:text="#{com.alvcalgon.acme.explorer.register.manager}">Manager</a>
+							       <a class="dropdown-item" href="#"
+								   th:href="@{/ranger/administrator/register}"
+							       th:text="#{com.alvcalgon.acme.explorer.register.manager}">Ranger</a>
+							</div>
+						</li>
+						
+						<li class="nav-item" sec:authorize="hasAuthority('ADMINISTRATOR')">
+							<a class="nav-link" href="#" th:href="@{/legal-text/administrator/list}"
+							   th:text="#{com.alvcalgon.acme.explorer.legal.text.list}">Catalogue of legal text</a>
+						</li>
+						
+						<li class="nav-item" sec:authorize="hasAuthority('ADMINISTRATOR')">
+							<a class="nav-link" href="#" th:href="@{/tag/administrator/list}"
+							   th:text="#{com.alvcalgon.acme.explorer.tag.list}">Catalogue of tags</a>
+						</li>
+						
+						<li class="nav-item" sec:authorize="hasAuthority('ADMINISTRATOR')">
+							<a class="nav-link" href="#" th:href="@{/category/administrator/list}"
+							   th:text="#{com.alvcalgon.acme.explorer.category.list}">Taxonomy of categories</a>
+						</li>
+					</ul>
+						
+					<ul class="navbar-nav">
+						<li class="navbar-text">
+							<select class="form-control" id="selectLanguage-custom">
+								<option value="en" th:text="#{language.english}" 
+										th:selected="__${#locale}__ == 'en' ? 'true' : 'false'">en</option>
+								<option value="es" th:text="#{language.spanish}"
+										th:selected="__${#locale}__ == 'es' ? 'true' : 'false'">es</option>
+							</select>
+						</li>
+						
+						<li class="navbar-text" sec:authorize="isAnonymous()">
+							<a class="nav-link" href="#" th:href="@{/login}"
+							   th:text="#{com.alvcalgon.acme.explorer.login}">
+								Login
+							</a>
+						</li>
+						
+						<li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+							<a class="nav-link dropdown-toggle" href="#"
+							   id="navbardrop" data-toggle="dropdown"
+							   th:text="#{com.alvcalgon.acme.explorer.profile}"> Profile </a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="#"
+								   th:href="@{/actor/authenticated/display}"
+							       th:text="#{com.alvcalgon.acme.explorer.profile.edition}">Personal information</a>
+								<a class="dropdown-item" href="#"
+								   th:href="@{/logout}"
+							       th:text="#{com.alvcalgon.acme.explorer.folder.message}">Folder and messages</a>
+								<a class="dropdown-item" href="#"
+								   th:href="@{/logout}"
+							       th:text="#{com.alvcalgon.acme.explorer.logout}">Logout</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</body>
+</html>

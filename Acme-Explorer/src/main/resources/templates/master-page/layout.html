@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+	<html th:lang-xmllang="${#locale}" th:fragment="layout (title, content)"
+	      xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+		<head>
+			<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+			<link rel="stylesheet" type="text/css" th:href="@{/libraries/custom/css/global.css}" />
+			<link rel="stylesheet" type="text/css" th:href="@{/libraries/custom/css/footer.css}" />
+			<link rel="stylesheet" type="text/css" th:href="@{/libraries/custom/css/header.css}" />
+			<link rel="stylesheet" type="text/css" th:href="@{/libraries/custom/css/responsive.css}" />
+			<link rel="stylesheet" type="text/css" th:href="@{/libraries/bootstrap/4.1.3/css/bootstrap.min.css}" />
+			
+			<script type="text/javascript" th:src="@{/libraries/jquery/3.3.1/js/jquery.min.js}"></script>
+													
+			<!--<script type="text/javascript" th:src="@{/libraries/popper.js/1.14.4/js/popper.min.js}"></script> -->
+			<script type="text/javascript" th:src="@{/libraries/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+			
+			<title th:replace="${title}">Layout Title</title>
+		</head>
+		
+		<body>
+			<section class="master-page header">
+				<div th:replace="master-page/header :: frag-header"></div>
+			</section>
+			
+			<div class="clearfix visible-sm"></div>
+			
+			<section class="master-page content">
+				<div th:replace="${content}">Layout content</div>
+			</section>
+			
+			<div class="clearfix visible-sm"></div>
+			
+			<section class="master-page footer">
+				<div id="piePagina" class="master-page-footer" th:insert="master-page/footer :: frag-footer"></div>
+			</section>
+			
+			<script type="text/javascript" th:src="@{/libraries/custom/js/language.js}"></script>
+		</body>
+	</html>

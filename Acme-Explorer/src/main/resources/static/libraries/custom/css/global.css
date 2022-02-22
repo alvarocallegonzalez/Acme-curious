@@ -1,0 +1,149 @@
+@charset "UTF-8";
+
+/* General */
+
+* {
+	box-sizing: border-box;
+	font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+	/*background-color: rgb(248, 249, 250) !important;*/
+	background-color: #F0F0F2 !important;
+}
+
+a {
+	text-decoration:none;
+}
+
+div.invalid-feedback {
+	display: block;
+}
+
+span.error {
+	color:red;
+}
+
+div.results-container, div.enlaces-paginacion, div.info-size {
+	margin-top:25px;
+}
+
+/* ------------------------------ */
+
+
+div.enlaces-paginacion ul li {
+	display: inline;
+}
+
+div.enlaces-paginacion ul li a {
+	float:left;
+}
+
+ul.navbar-nav li.nav-item.right-link {
+	float:right !important;
+}
+
+ul.navbar li.nav-item a {
+	color: black;
+}
+
+div.no-elements {
+	padding: 25px;
+	width: 50%;
+}
+
+p.volver-atras {
+	margin: 25px;
+}
+
+.hidden {
+	display: none;
+}
+
+@media screen and (max-width: 600px) {
+	nav.nav {
+		margin-left: 7rem;
+		margin-right: 5rem;
+	}
+}
+
+/* Selector de idioma */
+div.language {
+	width: 15rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	margin-left: 3rem;
+}
+
+@media screen and (min-width: 992px) {
+	table.table.hall-fame {
+		width: 75%;
+	}
+}
+
+/* index */
+@media screen and (min-width: 992px) {
+	.systems {
+    overflow: hidden;
+	}
+
+	#descripcionAppWeb, #descripcionAPI {
+	    width: 25rem;
+	}
+	
+	#descripcionAppWeb {
+	    float: left;
+	}
+	
+	#descripcionAPI {
+	    float: right;
+	    margin-left: 2rem;
+	}
+	
+	.vl {
+	    border-left: 6px solid grey;
+	    height: 15rem;
+	    display: inline-block;
+	    position: absolute;
+	    left: 50%;
+	    margin-left: -3px
+	}
+	
+	.system-custom {
+	    display: inline-block;
+	    padding: 1rem;
+	}
+}
+
+
+/* ------------------ */
+
+/* Display */
+@media screen and (min-width: 992px) {
+	.display-object {
+    overflow: hidden;
+}
+
+	.parte {
+	    display: inline-block;
+	    padding: 1rem;
+	}
+	
+	#info-personal {
+	    float:left;
+	    margin-left: 2rem;
+	}
+	
+	.vl.display {
+	    height: 20rem;
+	}
+	
+	#info-dashboard {
+	    float: right;
+	    margin-right: 2rem;
+	}
+}
+
+
+/* ----------------- /*
+
