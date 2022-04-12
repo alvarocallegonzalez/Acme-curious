@@ -8,6 +8,8 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -26,6 +28,8 @@ import com.alvcalgon.acme.AcmeExplorer.repositories.ActorRepository;
 @Transactional
 public class ActorService {
 
+	private static final Log _log = LogFactory.getLog(ActorService.class);
+	
 	@Autowired
 	private ActorRepository actorRepository;
 
@@ -59,12 +63,16 @@ public class ActorService {
 	public Actor findByPrincipal() {
 		Actor result = null;
 
-		UserDetails userDetails = utilityService.getUserDetailsByPrincipal();
+		try {
+			UserDetails userDetails = utilityService.getUserDetailsByPrincipal();
 
-		if (userDetails != null) {
-			String username = userDetails.getUsername();
+			if (userDetails != null) {
+				String username = userDetails.getUsername();
 
-			result = findByUsername(username);
+				result = findByUsername(username);
+			}
+		} catch (Exception e ) {
+			System.out.println("Error al recupear usuario logeado");
 		}
 
 		return result;

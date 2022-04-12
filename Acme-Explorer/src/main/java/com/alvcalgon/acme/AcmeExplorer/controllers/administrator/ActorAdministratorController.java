@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alvcalgon.acme.AcmeExplorer.bean.Actor;
 import com.alvcalgon.acme.AcmeExplorer.bean.Administrator;
 import com.alvcalgon.acme.AcmeExplorer.form.AdministratorForm;
 import com.alvcalgon.acme.AcmeExplorer.services.AdministratorService;
@@ -34,12 +35,15 @@ public class ActorAdministratorController {
 	public ModelAndView register() {
 		log.debug("Render administrator form...");
 
+		Actor principal = administratorService.findByPrincipal();
+		
 		ModelAndView result = new ModelAndView(ConstantPool.HTML_ADMIN_EDIT);
 
 		AdministratorForm adminForm = new AdministratorForm();
 
 		result.addObject(ConstantPool.VIEW_ADMIN_FORM, adminForm);
-
+		result.addObject("principal", principal);
+		
 		return result;
 
 	}

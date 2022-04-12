@@ -26,13 +26,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/").permitAll() //
 				.antMatchers("/static/**").permitAll() //
 				.antMatchers("/resources/**").permitAll() //
-				.antMatchers("/actor/administrator/register").permitAll() //
-				.antMatchers("/actor/manager/register").hasAuthority(ConstantPool.ADMINISTRATOR)
+				.antMatchers("/actor/administrator/register").hasAuthority(ConstantPool.ADMINISTRATOR) //
+				.antMatchers("/actor/manager/register").hasAuthority(ConstantPool.ADMINISTRATOR) //
 				.antMatchers("/actor/ranger/register").anonymous() //
 				.antMatchers("/actor/explorer/register").anonymous() //
 				.and() //
 				.formLogin() //
 				.loginPage("/login") //
+				.failureUrl("/error") //
 				.defaultSuccessUrl("/home") //
 				.and() //
 				.logout() //

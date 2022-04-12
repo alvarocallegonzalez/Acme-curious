@@ -9,6 +9,45 @@
 				<div class="form container">
 					<form th:action="@{/login}" method="post" id="form-login">
 						<div class="form-group">
+							<div class="col-sm-3">
+								<label for="username" th:text="#{com.alvcalgon.acme.explorer.login.username}"></label>
+								<input type="text" class="form-control is-invalid" id="username" name="username" />
+								<div class="valid-feedback"></div>
+									<div class="invalid-feedback">
+										<span class="hidden error">Invalid username</span>
+										<span id="usernameError"></span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-3">
+								<label for="password" th:text="#{com.alvcalgon.acme.explorer.login.password}"></label>
+								<input type="password" class="form-control is-invalid" id="password" name="password" />
+								<div class="valid-feedback"></div>
+									<div class="invalid-feedback">
+										<span class="hidden error">Invalid password</span>
+										<span id="passwordError"></span>
+								</div>
+							</div>
+						</div>
+						
+						<div class="">
+							<button type="submit" class="btn btn-form btn-secondary" th:text="#{com.alvcalgon.acme.explorer.login}">Login</button>
+						</div>
+					</form>
+				</div>
+				
+				<div id="container-create-account" class="container">
+					<p>
+						<span th:text="#{com.alvcalgon.acme.explorer.new.comer}">Is this your first time?</span>
+						<a href="#" th:href="@{/}" th:text="#{com.alvcalgon.acme.explorer.create.account}">Create an account</a>
+					</p>
+				</div>
+				
+				<!--
+				<div class="form container">
+					<form th:action="@{/login}" method="post" id="form-login">
+						<div class="form-group">
 							<label for="username" th:text="#{com.alvcalgon.acme.explorer.login.username}"></label>
 							<input type="text" class="form-control is-invalid" id="username" name="username" />
 							<div class="valid-feedback"></div>
@@ -31,7 +70,7 @@
 							<button type="submit" class="btn btn-form btn-secondary" th:text="#{com.alvcalgon.acme.explorer.login}">Login</button>
 						</div>
 					</form>
-				</div>
+				</div> -->
 			</div>
 		</body>
 	</html>

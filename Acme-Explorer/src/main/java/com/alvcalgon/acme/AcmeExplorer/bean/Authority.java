@@ -43,12 +43,9 @@ public class Authority implements GrantedAuthority {
 	private String authority;
 
 	public static Collection<Authority> listAuthorities() {
-		Collection<Authority> result;
-		Authority authority;
-
-		result = new ArrayList<>();
-
-		authority = new Authority(ConstantPool.ADMINISTRATOR);
+		Collection<Authority> result =  new ArrayList<>();
+		
+		Authority authority = new Authority(ConstantPool.ADMINISTRATOR);
 		result.add(authority);
 
 		authority = new Authority(ConstantPool.MANAGER);

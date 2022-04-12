@@ -1,5 +1,6 @@
 package com.alvcalgon.acme.AcmeExplorer.configuration;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,7 +21,7 @@ public class MyUserDetails implements UserDetails {
 		this.username = userAccount.getUsername();
 		this.password = userAccount.getPassword();
 		this.active = userAccount.isEnabled();
-		this.authorities = userAccount.getAuthorities();
+		this.authorities = new ArrayList<>(userAccount.getAuthorities());
 	}
 
 	public MyUserDetails() {
@@ -29,7 +30,7 @@ public class MyUserDetails implements UserDetails {
 
 	@Override
 	public Collection<Authority> getAuthorities() {
-		return this.authorities;
+		return new ArrayList<Authority>(this.authorities);
 	}
 
 	@Override

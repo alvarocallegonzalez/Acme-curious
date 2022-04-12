@@ -101,7 +101,7 @@ public class UtilityService {
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 
 		if (securityContext != null) {
-			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			Authentication authentication = securityContext.getAuthentication();
 
 			if (authentication != null) {
 				userDetails = (UserDetails) authentication.getPrincipal();

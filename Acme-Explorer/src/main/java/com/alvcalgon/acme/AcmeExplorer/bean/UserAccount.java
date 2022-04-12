@@ -19,13 +19,8 @@ import org.springframework.util.Assert;
 
 import com.alvcalgon.acme.AcmeExplorer.util.ConstantPool;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
 @Access(AccessType.FIELD)
-@Getter
-@Setter
 public class UserAccount extends DomainEntity implements UserDetails {
 
 	// Serialization identifier -----------------------------------------------
@@ -56,18 +51,24 @@ public class UserAccount extends DomainEntity implements UserDetails {
 		this.authorities = new ArrayList<>();
 	}
 
-	public void addAuthority(final Authority authority) {
-		Assert.notNull(authority, ConstantPool.ASSERT_ERROR_MSG_NULL_ELEMENT);
-		Assert.isTrue(!this.authorities.contains(authority), ConstantPool.ASSERT_ERROR_MSG_AUTHORITY_INCLUDED);
-
-		this.authorities.add(authority);
+	public String getUsername() {
+		return username;
 	}
 
-	public void removeAuthority(final Authority authority) {
-		Assert.notNull(authority, ConstantPool.ASSERT_ERROR_MSG_NULL_ELEMENT);
-		Assert.isTrue(this.authorities.contains(authority), ConstantPool.ASSERT_ERROR_MSG_AUTHORITY__DID_NOT_INCLUDE);
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
 
-		this.authorities.remove(authority);
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Collection<Authority> getAuthorities() {
+		return new ArrayList<>(this.authorities);
 	}
 
 	@Transient
@@ -93,10 +94,28 @@ public class UserAccount extends DomainEntity implements UserDetails {
 	public boolean isEnabled() {
 		return Boolean.TRUE;
 	}
+	
+	public void setAuthorities(Collection<Authority> authorities) {
+		this.authorities = new ArrayList<Authority>(authorities);
+	}
+	
+	public void addAuthority(final Authority authority) {
+		Assert.notNull(authority, ConstantPool.ASSERT_ERROR_MSG_NULL_ELEMENT);
+		Assert.isTrue(!this.authorities.contains(authority), ConstantPool.ASSERT_ERROR_MSG_AUTHORITY_INCLUDED);
+
+		this.authorities.add(authority);
+	}
+
+	public void removeAuthority(final Authority authority) {
+		Assert.notNull(authority, ConstantPool.ASSERT_ERROR_MSG_NULL_ELEMENT);
+		Assert.isTrue(this.authorities.contains(authority), ConstantPool.ASSERT_ERROR_MSG_AUTHORITY__DID_NOT_INCLUDE);
+
+		this.authorities.remove(authority);
+	}
 
 	@Override
 	public String toString() {
-		return "UserAccount [username=" + username + ", authorities=" + authorities + "]";
-	}
-
+		//return "UserAccount [username=" + username + ", authorities=" + authorities + "]";
+		return "UserAccount [username=" + username + "]";
+	}	
 }

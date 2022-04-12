@@ -30,7 +30,7 @@ public class MyUserDetailsService implements UserDetailsService {
 		UserDetails result = null;
 
 		if (userAccountOpt != null && StringUtils.hasText(username)) {
-			Collection<Authority> authorities = new ArrayList<Authority>();
+			Collection<Authority> authorities = new ArrayList<>();
 
 			UserAccount userAccount = userAccountOpt.get();
 			log.debug("UserAccount: " + userAccount);

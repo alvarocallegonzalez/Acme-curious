@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alvcalgon.acme.AcmeExplorer.bean.Actor;
+import com.alvcalgon.acme.AcmeExplorer.services.ActorService;
 import com.alvcalgon.acme.AcmeExplorer.services.UtilityService;
 
 @Controller
@@ -17,14 +19,19 @@ public class HomeController {
 
 	@Autowired
 	private UtilityService utilityService;
-
+	@Autowired
+	private ActorService actorService;
+	
+	
 	@GetMapping("home")
 	public ModelAndView home() {
 		log.debug("Rendering home...");
-
+		
+		Actor principal = actorService.findByPrincipal();
+		
 		ModelAndView result = new ModelAndView("home/index");
 		// TODO: Include some attributes in view
-		// result.addObject(attributeName, attributeValue)
+		result.addObject("principal", principal);
 
 		return result;
 	}
@@ -32,21 +39,17 @@ public class HomeController {
 	@GetMapping("login")
 	public ModelAndView login() {
 		log.debug("Rendering login form...");
-
-		// TODO: cambiar mas adelante
-		// ModelAndView result = new ModelAndView("home/login");
-		ModelAndView result = new ModelAndView("home/login2");
-
+		System.out.println("Rendering login form...");
+		
+		ModelAndView result = new ModelAndView("home/login");
+		
 		return result;
 	}
 
-	@GetMapping("logout")
-	public ModelAndView logout() {
-		log.debug("Rendering logout...");
-
-		ModelAndView result = new ModelAndView("home/logout");
-
+	@GetMapping("error")
+	public ModelAndView error() {		
+		ModelAndView result = new ModelAndView("home/error");
+		
 		return result;
 	}
-
 }
